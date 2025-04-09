@@ -26,7 +26,7 @@ public class ProjectileLunch : MonoBehaviour
         else
         {
             // Manual fire with left mouse button
-            if (Input.GetButtonDown("Fire1") && Time.time > nextFireTime)
+            if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime)
             {
                 FireProjectile();
                 nextFireTime = Time.time + fireRate;
@@ -56,13 +56,13 @@ public class ProjectileLunch : MonoBehaviour
         }
 
         // If neither Rigidbody nor Rigidbody2D, try to get a ProjectileMovement script
-        if (rb == null && projectile.GetComponent<Rigidbody2D>() == null)
-        {
-            /*ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();
-            if (projectileMovement != null)
-            {
-                projectileMovement.Launch(firePoint.forward, projectileSpeed);
-            }*/
-        }
+        //if (rb == null && projectile.GetComponent<Rigidbody2D>() == null)
+        //{
+        //    /*ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();
+        //    if (projectileMovement != null)
+        //    {
+        //        projectileMovement.Launch(firePoint.forward, projectileSpeed);
+        //    }*/
+        //}
     }
 }
