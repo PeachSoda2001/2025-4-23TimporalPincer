@@ -51,5 +51,22 @@ public class PasswardManager : MonoBehaviour
     void Update()
     {
         TextShow.text = InputPassward;
+        if (GameUI.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitPasswordState();
+        }
+    }
+    public void DeleteLastCharacter()
+    {
+        if (InputPassward.Length > 0)
+        {
+            InputPassward = InputPassward.Substring(0, InputPassward.Length - 1);
+            TextShow.text = InputPassward; // Update the text display immediately
+        }
+    }
+
+    public void ExitPasswordState()
+    {
+        HandleEndMiniGame();
     }
 }
