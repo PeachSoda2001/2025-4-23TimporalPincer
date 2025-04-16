@@ -2510,10 +2510,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759e00888104fd941938a684d0f6db1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 1200260564779906, guid: d0838917cb453dc4cad3e49b1be3f4b4, type: 3}
-  weaponSocket: {fileID: 2068086556}
-  hasWeapon: 0
-  minMoveSpeed: 0.1
+  Movement:
+    m_Name: Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: eaf989fa-f51b-4922-aeab-319c7fe06e4b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f0950e24-588b-4114-8044-f089092d78f6
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 13c2d000-3df2-4a45-a4bc-25f23b38f197
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 95cbb898-53f7-48df-a697-449ec4883e98
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 0e54d89d-464c-4118-874b-7ecfea0280ee
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &586003492
 GameObject:
   m_ObjectHideFlags: 0

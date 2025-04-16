@@ -1,9 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AniController : MonoBehaviour
 {
+    [SerializeField]
+    InputAction Movement;
+    Animator animator;
+    int isWalkingParam;
+
+    float verticalInput = Input.GetAxis("Vertical");
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+
+        isWalkingParam = Animator.StringToHash("isWalking");
+    }
+
+    private void OnEnable()
+    {
+ //     Movement.performed
+    }
+
+    void Update()
+    {
+        
+   //   if (Movement.IsPressed)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        
+        float currentSpeed = verticalInput;
+    }
+
+    /*
     private Animator animator;
     private ThirdPersonMovement movementScript;
 
@@ -97,4 +129,5 @@ public class AniController : MonoBehaviour
             currentWeapon = null;
         }
     }
+    */
 }
