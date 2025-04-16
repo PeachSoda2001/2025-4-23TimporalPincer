@@ -8,6 +8,7 @@ public class AniController : MonoBehaviour
     [SerializeField] InputAction Movement;
     Animator animator;
     int isWalkingParam;
+    public bool isWalkingbool;
 
     void Start()
     {
@@ -16,18 +17,23 @@ public class AniController : MonoBehaviour
         isWalkingParam = Animator.StringToHash("isWalking");
     }
 
-    private void OnEnable()
-    {
- //     Movement.performed
-    }
+   
 
     void Update()
     {
         
-   //   if (Movement.IsPressed)
+        if (Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))
         {
             animator.SetBool("isWalking", true);
+            isWalkingbool = true;
         }
+        else 
+        {
+            
+            animator.SetBool("isWalking", false);
+            isWalkingbool = false;
+        }
+        
     }
 
     /*
