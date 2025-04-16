@@ -5,12 +5,9 @@ using UnityEngine.InputSystem;
 
 public class AniController : MonoBehaviour
 {
-    [SerializeField]
-    InputAction Movement;
+    [SerializeField] InputAction Movement;
     Animator animator;
     int isWalkingParam;
-
-    float verticalInput = Input.GetAxis("Vertical");
 
     void Start()
     {
@@ -31,8 +28,6 @@ public class AniController : MonoBehaviour
         {
             animator.SetBool("isWalking", true);
         }
-        
-        float currentSpeed = verticalInput;
     }
 
     /*
