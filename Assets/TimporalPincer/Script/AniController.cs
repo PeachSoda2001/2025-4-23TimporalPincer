@@ -7,128 +7,74 @@ public class AniController : MonoBehaviour
 {
     [SerializeField] InputAction Movement;
     Animator animator;
+
     int isWalkingParam;
     public bool isWalkingbool;
+    
+    int hasWeaponParam;
+    public bool hasWeaponbool;
+    
+    [SerializeField] GameObject weaponPrefab;
+    [SerializeField] Transform weaponSocket;
+    private GameObject currentWeapon;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-
         isWalkingParam = Animator.StringToHash("isWalking");
+        hasWeaponParam = Animator.StringToHash("hasWeapon");
     }
-
-   
 
     void Update()
     {
-        
         if (Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))
         {
             animator.SetBool("isWalking", true);
             isWalkingbool = true;
         }
-        else 
+        else
         {
-            
             animator.SetBool("isWalking", false);
             isWalkingbool = false;
         }
-        
-    }
 
-    /*
-    private Animator animator;
-    private ThirdPersonMovement movementScript;
-
-    [SerializeField] private GameObject weaponPrefab;
-    [SerializeField] private Transform weaponSocket;
-    [SerializeField] private bool hasWeapon = false;
-
-    [SerializeField] private float minMoveSpeed = 0.1f;
-
-    private readonly string isWalking = "isWalking";
-    private readonly string hasWeaponParam = "hasWeapon";
-
-    private GameObject currentWeapon;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (animator == null)
-            animator = GetComponent<Animator>();
-
-        if (movementScript == null)
-            movementScript = GetComponent<ThirdPersonMovement>();
-
-        // Ensure animation state is set to no weapon at start
-        animator.SetBool(hasWeaponParam, false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateMovementAnimations();
-
-        // Check for weapon toggle
+        //f for weapon toggle
         if (Input.GetKeyDown(KeyCode.F))
         {
             ToggleWeapon();
         }
     }
 
-    private void UpdateMovementAnimations()
+    void ToggleWeapon()
     {
-        // Set walking animation based on movement speed
-        if (movementScript != null)
+        hasWeaponbool = !hasWeaponbool;
+        animator.SetBool("hasWeapon", hasWeaponbool);
+
+        if (hasWeaponbool)
         {
-            bool isMoving = movementScript.currentSpeed > minMoveSpeed;
-            animator.SetBool(isWalking, isMoving);
-        }
-    }
-
-    public void ToggleWeapon()
-    {
-        hasWeapon = !hasWeapon;
-
-        // Update animator parameter
-        animator.SetBool(hasWeaponParam, hasWeapon);
-
-        // Instantiate or destroy weapon based on state
-        if (hasWeapon)
-        {
-            EquipWeapon();
+            SpawnWeapon();
         }
         else
         {
-            UnequipWeapon();
+            DespawnWeapon();
         }
     }
 
-    private void EquipWeapon()
+    void SpawnWeapon()
     {
-        // Only create weapon if we have valid references
-        if (weaponPrefab != null && weaponSocket != null)
-        {
-            // Remove existing weapon if any
-            UnequipWeapon();
-
-            // Create new weapon at the socket position
-            currentWeapon = Instantiate(weaponPrefab, weaponSocket.position, weaponSocket.rotation, weaponSocket);
-        }
-        else
-        {
-            Debug.LogWarning("Missing weapon prefab or socket reference");
-        }
+        // spawn weapon
+        currentWeapon = Instantiate(weaponPrefab, weaponSocket);
+        // Position and rotate relative to socket
+        currentWeapon.transform.localPosition = Vector3.zero;
+        currentWeapon.transform.localRotation = Quaternion.identity;
     }
 
-    private void UnequipWeapon()
+    void DespawnWeapon()
     {
-        // Destroy the current weapon if it exists
         if (currentWeapon != null)
         {
             Destroy(currentWeapon);
             currentWeapon = null;
         }
     }
-    */
 }
